@@ -1,7 +1,5 @@
-# All needed files would be added to _HAL_INTFS_FILES, and it would include
-# hal/hal_halmac.c and all related files in directory hal/halmac/.
-# Before include this makefile, be sure interface (CONFIG_*_HCI) and IC
-# (CONFIG_RTL*) setting are all ready!
+# All needed files would be added to _HAL_INTFS_FILES, and it would include hal/hal_halmac.c and all related files in directory hal/halmac/.
+# Before include this makefile, be sure interface (CONFIG_*_HCI) and IC (CONFIG_RTL*) setting are all ready!
 
 # Base directory
 path_hm := hal/halmac
@@ -9,37 +7,43 @@ path_hm := hal/halmac
 path_hm_d1 := $(path_hm)/halmac_88xx
 
 ifeq ($(CONFIG_PCI_HCI), y)
-pci := y
-endif
-ifeq ($(CONFIG_SDIO_HCI), y)
-sdio := y
-endif
-ifeq ($(CONFIG_USB_HCI), y)
-usb := y
+	pci := y
 endif
 
+ifeq ($(CONFIG_SDIO_HCI), y)
+	sdio := y
+endif
+
+ifeq ($(CONFIG_USB_HCI), y)
+	usb := y
+endif
+
+# =========	=========	=========
+
 ifeq ($(CONFIG_RTL8822B), y)
-ic := 8822b
+	ic := 8822b
 endif
 
 ifeq ($(CONFIG_RTL8822C), y)
-ic := 8822c
+	ic := 8822c
 endif
 
 ifeq ($(CONFIG_RTL8821C), y)
-ic := 8821c
+	ic := 8821c
 endif
 
 ifeq ($(CONFIG_RTL8814B), y)
-v1 := _v1
-ic := 8814b
+	v1 := _v1
+	ic := 8814b
 endif
 
 ifeq ($(v1), _v1)
-d2all :=
+	d2all :=
 else
-d2all := y
+	d2all := y
 endif
+
+# =========	=========	=========
 
 halmac-y +=		$(path_hm)/halmac_api.o
 halmac-y +=		$(path_hm)/halmac_dbg.o
