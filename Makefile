@@ -1,7 +1,9 @@
 EXTRA_CFLAGS += $(USER_EXTRA_CFLAGS)
-EXTRA_CFLAGS += -O2
+EXTRA_CFLAGS += -O0
+#EXTRA_CFLAGS += -O2
 EXTRA_CFLAGS += -Wall
 EXTRA_CFLAGS += -Wextra
+EXTRA_CFLAGS += -Werror
 #EXTRA_CFLAGS += -pedantic
 #EXTRA_CFLAGS += -Wshadow -Wpointer-arith -Wcast-qual -Wstrict-prototypes -Wmissing-prototypes
 
@@ -10,6 +12,9 @@ EXTRA_CFLAGS += -Wno-type-limits
 EXTRA_CFLAGS += -Wno-unused-function
 EXTRA_CFLAGS += -Wno-unused-parameter
 EXTRA_CFLAGS += -Wno-unused-variable
+EXTRA_CFLAGS += -Wno-unused-value
+EXTRA_CFLAGS += -Wno-unused-label
+EXTRA_CFLAGS += -Wno-unused
 EXTRA_CFLAGS += -Wno-array-bounds
 EXTRA_CFLAGS += -Wno-address
 
@@ -50,7 +55,7 @@ CONFIG_GSPI_HCI = n
 ########################## Features ###########################
 CONFIG_NET_NS=y
 CONFIG_MP_INCLUDED = y
-CONFIG_POWER_SAVING = y
+CONFIG_POWER_SAVING = n # y
 CONFIG_IPS_MODE = default
 CONFIG_LPS_MODE = default
 CONFIG_USB_AUTOSUSPEND = n
@@ -90,10 +95,10 @@ CONFIG_RTW_UP_MAPPING_RULE = tos
 CONFIG_RTW_VHT_2G4 = y
 
 ########################## Debug ###########################
-CONFIG_RTW_DEBUG = n
+CONFIG_RTW_DEBUG = y
 # default log level is _DRV_INFO_ = 4,
 # please refer to "How_to_set_driver_debug_log_level.doc" to set the available level.
-CONFIG_RTW_LOG_LEVEL = 2
+CONFIG_RTW_LOG_LEVEL = 4
 
 # enable /proc/net/rtlxxxx/ debug interfaces
 CONFIG_PROC_DEBUG = y
